@@ -1,0 +1,79 @@
+<!-- Beautified Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background: linear-gradient(135deg, #3a1c71, #4776e6);">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#" style="font-size: 1.6rem; letter-spacing: -0.5px;">
+      <i class="fas fa-feather-alt me-2"></i>Blogify
+    </a>
+    
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" 
+      data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" 
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active px-3 py-2 mx-1 rounded-pill" aria-current="page" href="#">
+            <i class="fas fa-home me-1"></i> Home
+          </a>
+        </li>
+        
+        <% if (locals.user) { %>
+          <li class="nav-item">
+            <a class="nav-link px-3 py-2 mx-1 rounded-pill" href="/blog/add-new">
+              <i class="fas fa-plus-circle me-1"></i> Add Blog
+            </a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle px-3 py-2 mx-1 rounded-pill d-flex align-items-center" 
+              href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="avatar rounded-circle bg-light text-primary d-flex align-items-center justify-content-center me-2" 
+                style="width: 28px; height: 28px; font-size: 12px; font-weight: bold;">
+                <%= locals.user.name ? locals.user.name.charAt(0).toUpperCase() : 'M' %>
+              </div>
+              <span><%= locals.user.name || 'Manoj Kumar' %></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-2 py-2" style="min-width: 200px;">
+              <li class="px-3 py-1 text-muted small">
+                <i class="fas fa-user-circle me-1"></i> Signed in as <strong><%= locals.user.email || 'user@example.com' %></strong>
+              </li>
+              <li><hr class="dropdown-divider my-2"></li>
+              <li><a class="dropdown-item py-2" href="/user/profile"><i class="fas fa-user me-2"></i> My Profile</a></li>
+              <li><a class="dropdown-item py-2" href="/user/blogs"><i class="fas fa-pencil-alt me-2"></i> My Blogs</a></li>
+              <li><a class="dropdown-item py-2" href="/user/settings"><i class="fas fa-cog me-2"></i> Settings</a></li>
+              <li><hr class="dropdown-divider my-2"></li>
+              <li><a class="dropdown-item py-2 text-danger" href="/user/logout"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link px-3 py-2 mx-1 rounded-pill" href="/user/signup">
+              <i class="fas fa-user-plus me-1"></i> Sign Up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-light text-primary px-3 py-2 mx-1 rounded-pill fw-medium" href="/user/signin">
+              <i class="fas fa-sign-in-alt me-1"></i> Sign In
+            </a>
+          </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<% if(locals.error) { %>
+  <div class="container mt-4">
+    <div class="alert alert-danger border-0 shadow-sm" role="alert">
+      <div class="d-flex align-items-center">
+        <i class="fas fa-exclamation-circle me-2"></i>
+        <div><%= locals.error %></div>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<!-- Add Font Awesome in your head section if not already included -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> -->
