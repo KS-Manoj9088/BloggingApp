@@ -11,7 +11,7 @@ const { checkforauth } = require('./middleware/auth')
 const Blog=require('./models/blog')
 app.use(express.static(path.resolve('./public')))
 
-app.use(express.static(path.resolve('./public')))
+//app.use(express.static(path.resolve('./public')))
 connectDB()
 app.set("view engine","ejs")
 app.set("views",path.resolve("./views"))
