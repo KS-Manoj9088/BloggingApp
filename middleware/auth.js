@@ -18,9 +18,6 @@ function checkforauth(cookiename){
     }
 }
 
-
-
-
 module.exports={checkforauth}
 
 

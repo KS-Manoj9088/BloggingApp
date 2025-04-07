@@ -19,9 +19,3 @@ const commentschema= new Schema ({
 
 const Comments=model("comment",commentschema)
 module.exports=Comments
-
-
-
-
-
-

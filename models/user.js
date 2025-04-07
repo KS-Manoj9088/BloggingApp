@@ -35,7 +35,6 @@ const userschema = new Schema({
 
 },{timestamps:true})
 
-
 userschema.pre('save', function(next){
     const user=this;
     if(!user.isModified("password")) return next();
@@ -73,10 +72,3 @@ userschema.static('matchpasswordandgeneratetoken', async function (email,passwor
 
 const User=model('user',userschema)
 module.exports=User
-
-
-
-
-
-
-
